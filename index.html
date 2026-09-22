@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estuda Fácil</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        header {
+            background: #4f46e5;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 35px;
+            margin-bottom: 8px;
+        }
+
+        nav {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #4f46e5;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .bem-vindo {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .bem-vindo h2 {
+            color: #4f46e5;
+            margin-bottom: 10px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .card h3 {
+            color: #4f46e5;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        button {
+            background: #4f46e5;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #3730a3;
+        }
+
+        .tarefas {
+            background: white;
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        .tarefas h2 {
+            color: #4f46e5;
+            margin-bottom: 15px;
+        }
+
+        input {
+            padding: 11px;
+            width: 70%;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        ul {
+            margin-top: 20px;
+            list-style: none;
+        }
+
+        li {
+            background: #f1f5f9;
+            padding: 12px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+        }
+
+        footer {
+            margin-top: 40px;
+            background: #312e81;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>📚 Estuda Fácil</h1>
+    <p>Organize seus estudos e aprenda de forma mais fácil!</p>
+</header>
+
+<nav>
+    <a href="#inicio">Início</a>
+    <a href="#materias">Matérias</a>
+    <a href="#tarefas">Tarefas</a>
+</nav>
+
+<div class="container">
+
+    <section class="bem-vindo" id="inicio">
+        <h2>Bem-vindo ao Estuda Fácil!</h2>
+        <p>
+            Um espaço para ajudar estudantes a organizar os estudos,
+            lembrar das tarefas e aprender melhor.
+        </p>
+    </section>
+
+    <section id="materias">
+        <div class="cards">
+
+            <div class="card">
+                <h3>📖 Português</h3>
+                <p>Organize seus conteúdos e atividades de Português.</p>
+                <button onclick="alert('Área de Português')">
+                    Acessar
+                </button>
+            </div>
+
+            <div class="card">
+                <h3>🔢 Matemática</h3>
+                <p>Estude cálculos, fórmulas e exercícios.</p>
+                <button onclick="alert('Área de Matemática')">
+                    Acessar
+                </button>
+            </div>
+
+            <div class="card">
+                <h3>🔬 Ciências</h3>
+                <p>Revise conteúdos científicos de forma simples.</p>
+                <button onclick="alert('Área de Ciências')">
+                    Acessar
+                </button>
+            </div>
+
+            <div class="card">
+                <h3>🌎 História</h3>
+                <p>Organize seus estudos e revise acontecimentos históricos.</p>
+                <button onclick="alert('Área de História')">
+                    Acessar
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="tarefas" id="tarefas">
+        <h2>✅ Minhas tarefas</h2>
+
+        <input
+            type="text"
+            id="tarefa"
+            placeholder="Digite uma tarefa..."
+        >
+
+        <button onclick="adicionarTarefa()">
+            Adicionar
+        </button>
+
+        <ul id="lista"></ul>
+    </section>
+
+</div>
+
+<footer>
+    <p>© 2026 Estuda Fácil</p>
+    <p>Organize. Estude. Aprenda. 🚀</p>
+</footer>
+
+<script>
+    function adicionarTarefa() {
+        const campo = document.getElementById("tarefa");
+        const lista = document.getElementById("lista");
+
+        if (campo.value.trim() === "") {
+            alert("Digite uma tarefa primeiro!");
+            return;
+        }
+
+        const item = document.createElement("li");
+
+        item.textContent = "✅ " + campo.value;
+
+        item.onclick = function() {
+            item.remove();
+        };
+
+        lista.appendChild(item);
+
+        campo.value = "";
+    }
+</script>
+
+</body>
+</html>
